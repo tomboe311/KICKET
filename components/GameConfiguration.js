@@ -17,7 +17,6 @@ app.component('game-configuration', {
     `<div v-if="!started">
       <h2>{{ title }}:</h2>
       <p>{{ desc }}</p>
-      {{ players }}
       <div id="players">
         <div
           v-for="(player, index) in players"
