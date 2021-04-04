@@ -1,29 +1,22 @@
 app.component('game-configuration', {
+    data() {
+      return {
+          title: 'Game Configuration',
+          desc: 'Add names of the players',
+          players: ['Proton', 'Atom', 'Helium', 'Calcium']
+      }
+    },
     template:
     /*html*/
-    `<form id="game-config" onsubmit="start(); return false" action="#" method="get">
-    <h2>Game Configuration:</h2>
+    `<form id="game-config" action="#" method="get">
+    <h2>{{ title }}:</h2>
+    <p>{{ desc }}</p>
     <div id="players">
-      <div class="form-group row">
+      <div v-for="player in players" class="form-group row">
         <div class="col-12">
-          <input class="form-control" type="text" name="player[]" placeholder="Proton">
+          <input class="form-control" type="text" name="player[]" :placeholder="[[ player ]]">
         </div>
       </div>
-      <div class="form-group row">
-        <div class="col-12">
-          <input class="form-control" type="text" name="player[]" placeholder="Atom">
-        </div>
-      </div> 
-      <div class="form-group row">
-        <div class="col-12">
-          <input class="form-control" type="text" name="player[]" placeholder="Helium">
-        </div>
-      </div> 
-      <div class="form-group row">
-        <div class="col-12">
-          <input class="form-control" type="text" name="player[]" placeholder="Calcium">
-        </div>
-      </div> 
     </div>
     <div class="form-group row">
       <div class="col-12">
