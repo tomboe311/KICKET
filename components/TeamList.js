@@ -1,7 +1,13 @@
 app.component('team-list', {
-    template:
+  props: {
+    started: {
+      type: Boolean,
+      required: true
+    }
+  },
+  template:
     /*html*/
-    `<div id="teams" style="display: none;">
+    `<div id="teams" v-if="started">
     <h2>Teams for <span id="sumOfPlayers"></span> players</h2>
     <table id="teamList" class="table table-bordered">
       <thead>
