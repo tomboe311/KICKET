@@ -3,12 +3,15 @@ app.component('team-list', {
     started: {
       type: Boolean,
       required: true
+    },
+    players: {
+      type: Array
     }
   },
   template:
     /*html*/
     `<div id="teams" v-if="started">
-    <h2>Teams for <span id="sumOfPlayers"></span> players</h2>
+    <h2>Teams for {{ getSumOfPlayers }} players</h2>
     <table id="teamList" class="table table-bordered">
       <thead>
         <tr class="thead-dark">
@@ -31,6 +34,11 @@ app.component('team-list', {
   methods: {
     restart() {
       this.$emit('restart-game')
+    }
+  },
+  computed: {
+    getSumOfPlayers() {
+      return this.players.length;
     }
   }
 })

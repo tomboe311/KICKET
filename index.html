@@ -17,8 +17,15 @@
         <h1 class="text-center">{{ name }}</h1>
         <p class="lead text-center">{{ description }}</p>
 
-        <game-configuration :started="started" @start-game="startGame"></game-configuration>
-        <team-list :started="started" @restart-game="restartGame"></team-list>
+        <game-configuration
+          :started="started"
+           @start-game="startGame">
+        </game-configuration>
+        <team-list
+          :started="started"
+          :players="players"
+          @restart-game="restartGame">
+        </team-list>
       </main>
 
       <footer class="footer">

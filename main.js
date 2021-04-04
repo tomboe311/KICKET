@@ -14,7 +14,8 @@ const app = Vue.createApp({
         addPlayer(name) {
             this.players.push(name);
         },
-        startGame() {
+        startGame(players) {
+            this.players = players;
             this.started = true;
         },
         restartGame() {
@@ -26,10 +27,7 @@ const app = Vue.createApp({
             return '&copy; 2021 Copyright: <a href="' + this.website + '"> ' + this.website + ' </a>'
         },
         getPlayers() {
-            return this.players;
-        },
-        getSumOfPlayers() {
-            return this.players.length;
+            return this.players();
         }
     }
 })
