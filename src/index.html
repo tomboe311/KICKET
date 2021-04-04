@@ -30,16 +30,13 @@
         </team-list>
       </main>
 
-      <footer class="footer">
-        <div class="container text-center">
-            <span class="text-muted" v-html="getCopyright"></span>
-        </div>
-    </footer>
+      <kfooter
+        :copyright="getCopyright"></kfooter>
     </div>
 
     <script src="./main.js"></script>
     <script src="./components/Navbar.js"></script>
-
+    <script src="./components/Footer.js"></script>
     <script src="./components/GameConfiguration.js"></script>
     <script src="./components/TeamList.js"></script>
 
