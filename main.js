@@ -5,12 +5,31 @@ const app = Vue.createApp({
             description: 'KICKET helps to generate random teams for table soccer',
             author: 'Thomas Boehringer',
             email: 'git@tboehringer.de',
-            website: 'tboehringer.de'
+            website: 'tboehringer.de',
+            players: [],
+            started: false,
+        }
+    },
+    methods: {
+        addPlayer(name) {
+            this.players.push(name);
+        },
+        startGame() {
+            this.started = true;
+        },
+        restartGame() {
+            this.started = false;
         }
     },
     computed: {
         getCopyright() {
             return '&copy; 2021 Copyright: <a href="' + this.website + '"> ' + this.website + ' </a>'
+        },
+        getPlayers() {
+            return this.players;
+        },
+        getSumOfPlayers() {
+            return this.players.length;
         }
     }
 })

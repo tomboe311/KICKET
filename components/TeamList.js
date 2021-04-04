@@ -26,6 +26,11 @@ app.component('team-list', {
         </tr>
       </tbody>
     </table>
-    <button class="btn btn-dark" onclick="window.location.reload();">Back</button>
-  </div>`
+    <button class="btn btn-dark" v-on:click="restart">Back</button>
+  </div>`,
+  methods: {
+    restart() {
+      this.$emit('restart-game')
+    }
+  }
 })
