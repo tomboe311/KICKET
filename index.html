@@ -12,8 +12,8 @@
     <main role="main" class="container">
         <h1 class="text-center">KICKET</h1>
         <p class="lead text-center">KICKET helps to generate random teams for table soccer</p>
-        <h2>Game Configuration:</h2>
-        <form  onsubmit="start()">
+        <form id="game-config" onsubmit="start(); return false" action="#" method="POST">
+          <h2>Game Configuration:</h2>
           <div id="players">
             <div class="form-group row">
               <div class="col-12">
@@ -42,6 +42,31 @@
             </div>
           </div>
         </form>
+
+        <div id="teams" style="display: none;">
+          <h2>Teams for <span id="sumOfPlayers"></span> players</h2>
+          <table class="table table-bordered">
+            <thead>
+              <tr class="thead-dark">
+                <th scope="col">Team</th>
+                <th scope="col">Defense</th>
+                <th scope="col">Offense</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Alpha</th>
+                <td id="data1"></td>
+                <td id="data2"></td>
+              </tr>
+              <tr>
+                <th scope="row">Bravo</th>
+                <td id="data3"></td>
+                <td id="data4"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -62,7 +87,14 @@
         var sumOfPlayers = players.length;
 
         players.sort(function(a, b){return 0.5 - Math.random()});
-        alert('Team Alpha: ' + players[0] + ' & ' + players[1] + '\n' + 'Team Bravo: ' + players[2] + ' & ' + players[3])
+        document.getElementById("data1").innerHTML = players[0];
+        document.getElementById("data2").innerHTML = players[1];
+        document.getElementById("data3").innerHTML = players[2];
+        document.getElementById("data4").innerHTML = players[3];
+        document.getElementById('sumOfPlayers').innerHTML = sumOfPlayers;
+        document.getElementById('game-config').style.display = "none";;
+        document.getElementById('teams').style.display = "block";;
+
       }
       </script>
   </body>
