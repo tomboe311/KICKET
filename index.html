@@ -6,69 +6,35 @@
     <meta name="description" content="KICKET helps to generate random teams for table soccer">
     <meta name="author" content="Thomas Boehringer">
     <title>KICKET</title>
+    <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
-    <main role="main" class="container">
-        <h1 class="text-center">KICKET</h1>
-        <p class="lead text-center">KICKET helps to generate random teams for table soccer</p>
-        <form id="game-config" onsubmit="start(); return false" action="#" method="get">
-          <h2>Game Configuration:</h2>
-          <div id="players">
-            <div class="form-group row">
-              <div class="col-12">
-                <input class="form-control" type="text" name="player[]" placeholder="Proton">
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-12">
-                <input class="form-control" type="text" name="player[]" placeholder="Atom">
-              </div>
-            </div> 
-            <div class="form-group row">
-              <div class="col-12">
-                <input class="form-control" type="text" name="player[]" placeholder="Helium">
-              </div>
-            </div> 
-            <div class="form-group row">
-              <div class="col-12">
-                <input class="form-control" type="text" name="player[]" placeholder="Calcium">
-              </div>
-            </div> 
-          </div>
-          <div class="form-group row">
-            <div class="col-12">
-              <button name="submit" type="submit" class="btn btn-primary">Start</button>
-            </div>
-          </div>
-        </form>
+    <div id="app">
+      <main role="main" class="container">
+        <h1 class="text-center">{{ name }}</h1>
+        <p class="lead text-center">{{ description }}</p>
 
-        <div id="teams" style="display: none;">
-          <h2>Teams for <span id="sumOfPlayers"></span> players</h2>
-          <table id="teamList" class="table table-bordered">
-            <thead>
-              <tr class="thead-dark">
-                <th scope="col">Team</th>
-                <th scope="col">Defense</th>
-                <th scope="col">Offense</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr id="alpha">
-                <th scope="row">Alpha</th>
-              </tr>
-              <tr id="bravo">
-                <th scope="row">Bravo</th>
-              </tr>
-            </tbody>
-          </table>
-          <button class="btn btn-dark" onclick="window.location.reload();">Back</button>
-        </div>
-    </main>
+        <game-configuration></game-configuration>
+        <team-list></team-list>
+
+      </main>
+    </div>
+
+
+    <script src="./main.js"></script>
+
+    <script src="./components/GameConfiguration.js"></script>
+    <script src="./components/TeamList.js"></script>
+
+    <script>
+      const mountedApp = app.mount('#app')
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
     <script>
       function start() {
         var inputs = document.getElementsByName('player[]')
@@ -91,6 +57,7 @@
         addToTeam('bravo', players);
         
         document.getElementById('sumOfPlayers').innerHTML = sumOfPlayers;
+        document.getElementById('game-config').style.display = "none";
         document.getElementById('teams').style.display = "block";
       }
 
