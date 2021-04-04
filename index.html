@@ -23,7 +23,8 @@
         </game-configuration>
         <team-list
           :started="started"
-          :players="players"
+          :teams="generateTeams()"
+          :players="getPlayers"
           @restart-game="restartGame">
         </team-list>
       </main>
@@ -47,41 +48,5 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
-    <script>/*
-      function start() {
-        var inputs = document.getElementsByName('player[]')
-        var players = [];
-
-        inputs.forEach(function(item, index, array) {
-          if (item.value !== '') {
-            players.push(item.value);
-          } else {
-            players.push(item.placeholder);
-          }
-        });
-        var sumOfPlayers = players.length;
-
-        players.sort(function(a, b){return 0.5 - Math.random()});
-        var halfLength = Math.ceil(players.length / 2);
-        var teamAlpha = players.splice(0,halfLength);
-
-        addToTeam('alpha', teamAlpha);
-        addToTeam('bravo', players);
-        
-        document.getElementById('sumOfPlayers').innerHTML = sumOfPlayers;
-        document.getElementById('game-config').style.display = "none";
-        document.getElementById('teams').style.display = "block";
-      }
-
-      function addToTeam(teamName, players) {
-        var team = document.getElementById(teamName);
-        players.forEach(function(name) {
-          var td = team.appendChild(document.createElement('td'));
-          td.innerHTML = name;
-        });
-
-      }*/
-      </script>
   </body>
 </html>

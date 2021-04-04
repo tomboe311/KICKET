@@ -4,6 +4,10 @@ app.component('team-list', {
       type: Boolean,
       required: true
     },
+    teams: {
+      type: Array,
+      required: true
+    },
     players: {
       type: Array
     }
@@ -21,11 +25,9 @@ app.component('team-list', {
         </tr>
       </thead>
       <tbody>
-        <tr id="alpha">
-          <th scope="row">Alpha</th>
-        </tr>
-        <tr id="bravo">
-          <th scope="row">Bravo</th>
+        <tr v-for="(team, index) in teams">
+          <th scope="row">{{ team.name }}</th>
+          <td v-for="(name, index) in team.members">{{ name }}</td>    
         </tr>
       </tbody>
     </table>

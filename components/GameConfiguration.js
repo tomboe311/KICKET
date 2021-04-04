@@ -46,7 +46,6 @@ app.component('game-configuration', {
   methods: {
     updatePlayer(index, name) {
       this.players[index] = name
-     
     },
     startGame() {
       this.$emit('start-game', this.players)
