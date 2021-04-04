@@ -8,8 +8,10 @@
     <title>KICKET</title>
     <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/kicket.css">
   </head>
   <body>
+
     <div id="app">
       <main role="main" class="container">
         <h1 class="text-center">{{ name }}</h1>
@@ -17,18 +19,23 @@
 
         <game-configuration></game-configuration>
         <team-list></team-list>
-
       </main>
-    </div>
 
+      <footer class="footer">
+        <div class="container text-center">
+            <span class="text-muted" v-html="getCopyright"></span>
+        </div>
+    </footer>
+    </div>
 
     <script src="./main.js"></script>
 
     <script src="./components/GameConfiguration.js"></script>
     <script src="./components/TeamList.js"></script>
+    <script src="./components/Footer.js"></script>
 
     <script>
-      const mountedApp = app.mount('#app')
+      const kicket = app.mount('#app')
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
