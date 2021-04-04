@@ -12,7 +12,7 @@
     <main role="main" class="container">
         <h1 class="text-center">KICKET</h1>
         <p class="lead text-center">KICKET helps to generate random teams for table soccer</p>
-        <form id="game-config" onsubmit="start(); return false" action="#" method="POST">
+        <form id="game-config" onsubmit="start(); return false" action="#" method="get">
           <h2>Game Configuration:</h2>
           <div id="players">
             <div class="form-group row">
@@ -93,9 +93,8 @@
         document.getElementById("data3").innerHTML = players[2];
         document.getElementById("data4").innerHTML = players[3];
         document.getElementById('sumOfPlayers').innerHTML = sumOfPlayers;
-        document.getElementById('game-config').style.display = "none";;
-        document.getElementById('teams').style.display = "block";;
-
+        document.getElementById('game-config').style.display = "none";
+        document.getElementById('teams').style.display = "block";
       }
       </script>
   </body>
