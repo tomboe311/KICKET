@@ -23,7 +23,7 @@ app.component('game-configuration', {
           v-for="(player, index) in players"
           :key=index
           class="form-group row">
-          <div class="col-12">
+          <div class="col-10">
             <input
               v-on:keyup="updatePlayer(index, $event.target.value)"
               :id="'pl_' + index"
@@ -32,12 +32,16 @@ app.component('game-configuration', {
               name="player[]"
               :placeholder="[[ player ]]">
           </div>
+          <div class="col">
+            <button v-on:click="remove(index)" class="btn btn-sm btn-outline-danger">X</button>
+          </div>
         </div>
       </div>
       <div class="form-group row">
         <div class="col-12">
           <button
             v-on:click="startGame"
+            :disabled="players.length < 4"
             class="btn btn-primary">
             Start
           </button>
@@ -54,6 +58,9 @@ app.component('game-configuration', {
     },
     startGame() {
       this.$emit('start-game', this.players)
+    },
+    remove(index) {
+      this.players.splice(index, 1)
     }
   },
   mounted() {
