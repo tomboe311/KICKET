@@ -41,7 +41,7 @@ app.component('game-configuration', {
         <div class="col-12">
           <button
             v-on:click="startGame"
-            :disabled="players.length < 4"
+            :disabled="players.length <= 2"
             class="btn btn-primary">
             Start
           </button>
