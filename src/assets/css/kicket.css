@@ -17,6 +17,10 @@ body {
   background-color: #48c9b0;
   border-color: #48c9b0 ;
 }
+.btn-success:disabled, .btn-primary:disabled {
+  background-color: #48c9b0;
+  border-color: #48c9b0 ;
+}
 .footer {
   position: absolute;
   bottom: 0;
