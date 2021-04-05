@@ -26,10 +26,8 @@ const app = Vue.createApp({
             var teams = [];
             const sumOfTeams = Math.ceil(this.players.length / 2)
             for (var i=0; i < sumOfTeams; i++) {
-                console.log(this.defaultTeamNames[i])
                 teams.push({ 'name': this.defaultTeamNames[i], 'members': tmpPlayers.splice(0,2) })
             }
-            console.log(teams)
             return teams;
         }
     },
