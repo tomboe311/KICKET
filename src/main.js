@@ -12,14 +12,15 @@ const app = Vue.createApp({
     },
     methods: {
         addPlayer(name) {
-            this.players.push(name);
+            this.players.push(name)
         },
         startGame(players) {
-            this.players = players;
-            this.started = true;
+            this.players = players
+            this.started = true
         },
         restartGame() {
-            this.started = false;
+            this.started = false
+            this.players = []
         },
         generateTeams() {
             this.players.sort(function (a, b) { return 0.5 - Math.random() })
@@ -31,8 +32,7 @@ const app = Vue.createApp({
                 { 'name': 'alpha', 'members': teamAlpha },
                 { 'name': 'bravo', 'members': teamBravo }
             ]
-        },
-
+        }
     },
     computed: {
         getCopyright() {
