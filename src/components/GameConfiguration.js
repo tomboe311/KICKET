@@ -23,17 +23,17 @@ app.component('game-configuration', {
           v-for="(player, index) in players"
           :key=index
           class="form-group row">
-          <div class="col-10">
-            <input
-              v-on:keyup="updatePlayer(index, $event.target.value)"
-              :id="'pl_' + index"
-              class="form-control"
-              type="text"
-              name="player[]"
-              :placeholder="[[ player ]]">
-          </div>
-          <div class="col">
-            <button v-on:click="remove(index)" class="btn btn-sm btn-outline-danger">X</button>
+          <div class="col-12">
+            <div class="input-group">
+              <input
+                v-on:keyup="updatePlayer(index, $event.target.value)"
+                :id="'pl_' + index"
+                class="form-control"
+                type="text"
+                name="player[]"
+                :placeholder="[[ player ]]">
+              <button v-on:click="remove(index)" class="input-group-addon btn btn-sm btn-outline-danger">Remove</button>
+            </div>
           </div>
         </div>
       </div>
