@@ -16,7 +16,7 @@ app.component('team-list', {
     /*html*/
     `<div id="teams" v-if="started">
     <h2>Teams for {{ getSumOfPlayers }} players</h2>
-    <table id="teamList" class="table table-bordered">
+    <table id="teamList" class="table table-bordered table-hover">
       <thead>
         <tr class="thead-dark">
           <th scope="col">Team</th>
@@ -25,7 +25,7 @@ app.component('team-list', {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(team, index) in teams">
+        <tr v-for="(team, index) in teams" class="table-light">
           <th scope="row">{{ team.name }}</th>
           <td v-for="(name, index) in team.members">{{ name }}</td>    
         </tr>
