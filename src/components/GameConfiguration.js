@@ -17,7 +17,7 @@ app.component('game-configuration', {
     /*html*/
     `<div v-if="!started">
       <h2>{{ title }}</h2>
-      <p>{{ desc }} <span><button v-on:click="newPlayer" class="btn btn-sm btn-success">+</button></span></p>
+      <p>{{ desc }} <span><button v-on:click="newPlayer" class="btn btn-sm btn-success">Add new Player</button></span></p>
       <div id="players">
         <div
           v-for="(player, index) in players"
