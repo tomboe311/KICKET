@@ -36,7 +36,7 @@ const app = Vue.createApp({
     },
     computed: {
         getCopyright() {
-            return '&copy; 2021 Copyright: <a href="' + this.website + '"> ' + this.website + ' </a>'
+            return '&copy; ' + new Date().getFullYear() + ' Copyright <a href="' + this.website + '"> ' + this.website + ' </a>'
         },
         getPlayers() {
             return this.players;
