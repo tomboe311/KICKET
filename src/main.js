@@ -33,7 +33,7 @@ const app = Vue.createApp({
     },
     computed: {
         getCopyright() {
-            return '&copy; ' + new Date().getFullYear() + ' Copyright <a href="' + this.website + '"> ' + this.website + ' </a>'
+            return '&copy; ' + new Date().getFullYear() + ' Copyright <a href="https://' + this.website + '"> ' + this.website + ' </a>'
         },
         getPlayers() {
             return this.players;
