@@ -1,0 +1,14 @@
+{
+    "name": "KICKET",
+    "short_name": "KICKET",
+    "icons": [
+        {
+            "src": "/android-chrome-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#366164",
+    "background_color": "#366164",
+    "display": "standalone"
+}
