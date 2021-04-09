@@ -33,8 +33,7 @@
         <p class="lead text-center">{{ description }}</p>
 
         <game-configuration
-          :started="started"
-          :defaultNames="defaultPlayerNames"
+           :started="started"
            @start-game="startGame">
         </game-configuration>
         <team-list
