@@ -6,7 +6,7 @@ const app = Vue.createApp({
             author: 'Thomas Boehringer',
             email: 'git@tboehringer.de',
             website: 'tboehringer.de',
-            players: [],
+            players: new Set(),
             started: false,
             defaultTeamNames: []
         }
@@ -21,13 +21,17 @@ const app = Vue.createApp({
             this.players = []
         },
         generateTeams() {
-            this.players.sort(function (a, b) { return 0.5 - Math.random() })
-            var tmpPlayers = this.players.slice()
+            let players = Array.from(this.players)
+            players.sort(function (a, b) { return 0.5 - Math.random() })
+            var tmpPlayers = players.slice()
             var teams = [];
-            const sumOfTeams = Math.ceil(this.players.length / 2)
+            const sumOfTeams = Math.ceil(players.length / 2)
             for (var i=0; i < sumOfTeams; i++) {
                 teams.push({ 'name': this.defaultTeamNames[i], 'members': tmpPlayers.splice(0,2) })
             }
+            console.log(players)
+            console.log(tmpPlayers)
+            console.log(teams)
             return teams;
         }
     },
@@ -36,7 +40,7 @@ const app = Vue.createApp({
             return '&copy; ' + new Date().getFullYear() + ' Copyright <a href="https://' + this.website + '"> ' + this.website + ' </a>'
         },
         getPlayers() {
-            return this.players;
+            return Array.from(this.players);
         }
     },
     mounted() {
