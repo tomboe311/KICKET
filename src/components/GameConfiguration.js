@@ -10,7 +10,8 @@ app.component('game-configuration', {
       title: 'Game Configuration',
       desc: 'Add names of the players',
       players: ['Proton', 'Atom', 'Helium', 'Calcium'],
-      defaultNames: []
+      defaultNames: [],
+      duplicateName: []
     }
   },
   template:
@@ -25,15 +26,18 @@ app.component('game-configuration', {
           :key=index
           class="form-group row">
           <div class="col-12">
-            <div class="input-group">
+            <div class="input-group has-validation">
               <input
                 v-on:keyup="updatePlayer(index, $event.target.value)"
+                v-bind:class="{'form-control':true, 'is-invalid' : duplicateName.includes(index) }"
                 :id="'pl_' + index"
-                class="form-control"
                 type="text"
                 name="player[]"
                 :placeholder="[[ player ]]">
               <button v-on:click="remove(index)" class="input-group-addon btn btn-sm btn-outline-danger">Remove</button>
+              <div class="invalid-feedback">
+                Duplicate name is not allowed
+              </div>
             </div>
           </div>
         </div>
@@ -42,7 +46,7 @@ app.component('game-configuration', {
         <div class="col-12">
           <button
             v-on:click="startGame"
-            :disabled="players.length <= 2"
+            :disabled="players.length <= 2 || duplicateName.length > 0"
             class="btn btn-primary">
             Start
           </button>
@@ -55,6 +59,11 @@ app.component('game-configuration', {
       this.players.push(name)
     },
     updatePlayer(index, name) {
+      this.duplicateName.splice(index, 1)
+      if(this.players.indexOf(name) !== -1 && event.key !== 'Shift') {
+        this.duplicateName.push(index);
+        return false
+      }
       this.players[index] = name
     },
     startGame() {
