@@ -4,7 +4,7 @@ const app = Vue.createApp({
             name: 'KICKET',
             description: 'KICKET helps to generate random teams for table soccer',
             author: 'Thomas Boehringer',
-            email: 'git@tboehringer.de',
+            email: 'dev@tboehringer.de',
             website: 'tboehringer.de',
             players: [],
             started: false,
@@ -34,6 +34,9 @@ const app = Vue.createApp({
     computed: {
         getCopyright() {
             return '&copy; ' + new Date().getFullYear() + ' Copyright <a href="https://' + this.website + '"> ' + this.website + ' </a>'
+        },
+        getGDPR() {
+            return '<a href="https://tboehringer.de/datenschutz.html#datenschutz">Privacy Policy</a>'
         },
         getPlayers() {
             return this.players;
