@@ -2,7 +2,7 @@ app.component('kfooter', {
     props: {
         copyright: {
             type: String,
-            rquired: true
+            required: true
         }
     },
     template:
