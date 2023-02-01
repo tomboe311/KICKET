@@ -4,7 +4,7 @@ const app = Vue.createApp({
             name: 'KICKET',
             description: 'KICKET helps to generate random teams for table soccer',
             author: 'Thomas Boehringer',
-            email: 'git@tboehringer.de',
+            email: 'dev@tboehringer.de',
             website: 'tboehringer.de',
             players: [],
             started: false,
