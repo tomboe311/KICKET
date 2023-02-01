@@ -35,6 +35,10 @@ const app = Vue.createApp({
         getCopyright() {
             return '&copy; ' + new Date().getFullYear() + ' Copyright <a href="https://' + this.website + '"> ' + this.website + ' </a>'
         },
+        getGDPR() {
+            console.log('test')
+            return '<a href="https://tboehringer.de/datenschutz.html#datenschutz">Privacy Policy</a>'
+        },
         getPlayers() {
             return this.players;
         }

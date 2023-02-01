@@ -3,6 +3,10 @@ app.component('kfooter', {
         copyright: {
             type: String,
             required: true
+        },
+        gdpr: {
+            type: String,
+            required: true
         }
     },
     template:
@@ -11,6 +15,8 @@ app.component('kfooter', {
     <footer class="footer">
         <div class="container text-center">
             <span class="text-muted" v-html="copyright"></span>
+            -
+            <span class="text-muted" v-html="gdpr"></span>
         </div>
     </footer>`
 })
