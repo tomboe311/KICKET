@@ -6,6 +6,8 @@ const app = Vue.createApp({
             author: 'Thomas Boehringer',
             email: 'dev@tboehringer.de',
             website: 'tboehringer.de',
+            gdprText: 'Privacy Policy',
+            gdprUrl: 'https://tboehringer.de/datenschutz.html#datenschutz',
             players: [],
             started: false,
             defaultTeamNames: []
@@ -33,10 +35,10 @@ const app = Vue.createApp({
     },
     computed: {
         getCopyright() {
-            return '&copy; ' + new Date().getFullYear() + ' Copyright <a href="https://' + this.website + '"> ' + this.website + ' </a>'
+            return '&copy; ' + new Date().getFullYear() + '. <a href="https://' + this.website + '"> ' + this.author + ' </a>'
         },
         getGDPR() {
-            return '<a href="https://tboehringer.de/datenschutz.html#datenschutz">Privacy Policy</a>'
+            return '<a href="' + this.gdprUrl + '">' + this.gdprText + '</a>'
         },
         getPlayers() {
             return this.players;

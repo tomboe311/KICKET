@@ -9,6 +9,10 @@ app.component('game-configuration', {
     return {
       title: 'Game Configuration',
       desc: 'Add names of the players',
+      btnAddText: 'Add new Player',
+      btnRemovePlayerText: 'Remove Player',
+      missingPlayersText: 'At least 3 players needed!',
+      btnStartText: 'Start',
       players: ['Proton', 'Atom', 'Helium', 'Calcium'],
       defaultNames: []
     }
@@ -17,8 +21,8 @@ app.component('game-configuration', {
     /*html*/
     `<div v-if="!started">
       <h2>{{ title }}</h2>
-      <p>{{ desc }} <span><button v-on:click="newPlayer" class="btn btn-sm btn-success">Add new Player</button></span></p>
-      <div  v-if="players.length <= 2" class="alert alert-danger" role="alert">At least 3 players needed!</div>
+      <p>{{ desc }} <span><button v-on:click="newPlayer" class="btn btn-sm btn-success">{{ btnAddText }}</button></span></p>
+      <div  v-if="players.length <= 2" class="alert alert-danger" role="alert">{{ missingPlayersText }}</div>
       <div id="players">
         <div
           v-for="(player, index) in players"
@@ -33,7 +37,7 @@ app.component('game-configuration', {
                 type="text"
                 name="player[]"
                 :placeholder="[[ player ]]">
-              <button v-on:click="remove(index)" class="input-group-addon btn btn-sm btn-outline-danger">Remove</button>
+              <button v-on:click="remove(index)" class="input-group-addon btn btn-sm btn-outline-danger">{{ btnRemovePlayerText }}</button>
             </div>
           </div>
         </div>
@@ -44,7 +48,7 @@ app.component('game-configuration', {
             v-on:click="startGame"
             :disabled="players.length <= 2"
             class="btn btn-primary">
-            Start
+            {{ btnStartText }}
           </button>
         </div>
       </div>
