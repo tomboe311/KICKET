@@ -2,7 +2,7 @@ const app = Vue.createApp({
     data() {
         return {
             name: 'KICKET',
-            description: 'KICKET helps to generate random teams for table soccer',
+            description: 'Create perfect teams for foosball and other team sports with KICKET - the ultimate app.',
             author: 'Thomas Boehringer',
             email: 'dev@tboehringer.de',
             website: 'tboehringer.de',
