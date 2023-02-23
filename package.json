@@ -1,7 +1,19 @@
 {
   "name": "kicket",
-  "version": "0.0.0",
+  "version": "1.1.0",
+  "author": {
+    "name": "Thomas Boehringer",
+    "url": "https://tboehringer.de",
+    "email": "dev@tboehringer.de"
+  },
   "private": true,
+  "license": "MIT",
+  "homepage": "https://kicket.tboehringer.de",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tomboe311/KICKET.git"
+  },
+  "bugs": "https://github.com/tomboe311/KICKET/issues",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
