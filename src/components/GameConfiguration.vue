@@ -50,30 +50,30 @@ export default {
 <template>
   <div v-if="!started">
     <h2>{{ title }}</h2>
-    <p>{{ desc }} <span><button v-on:click="newPlayer" class="btn btn-sm btn-success" :title=btnAddText><font-awesome-icon icon="fa-solid fa-plus" /></button></span></p>
+    <p>{{ desc }}
+      <span>
+        <button v-on:click="newPlayer" class="btn btn-sm btn-success" :title=btnAddText><font-awesome-icon icon="fa-solid fa-plus" /></button>
+      </span>
+    </p>
     <div  v-if="players.length <= 2" class="alert alert-danger" role="alert">{{ missingPlayersText }}</div>
 
     <div id="players">
       <div
         v-for="(player, index) in players"
         :key=index
-        class="form-group row">
-        <div class="col-12">
-          <div class="input-group">
-            <input
-              v-on:keyup="updatePlayer(index, $event.target.value)"
-              :id="'pl_' + index"
-              class="form-control"
-              type="text"
-              name="player[]"
-              :placeholder="[[ player ]]">
-            <button v-on:click="remove(index)" class="input-group-addon btn btn-sm btn-outline-danger" :title=btnRemovePlayerText><font-awesome-icon icon="fa-solid fa-trash" /></button>
-          </div>
-        </div>
+        class="input-group mb-3">
+        <input
+          v-on:keyup="updatePlayer(index, $event.target.value)"
+          :id="'pl_' + index"
+          class="form-control"
+          type="text"
+          name="player[]"
+          :placeholder="[[ player ]]">
+        <button v-on:click="remove(index)" class="input-group-addon btn btn-sm btn-outline-danger" :title=btnRemovePlayerText><font-awesome-icon icon="fa-solid fa-trash" /></button>
       </div>
     </div>
-    <div class="form-group row">
-      <div class="col-12">
+
+    <div class="input-group">
         <button
           v-on:click="startGame"
           :disabled="players.length <= 2"
@@ -81,7 +81,6 @@ export default {
           :title="btnStartText">
           <font-awesome-icon icon="fa-solid fa-play" />
         </button>
-      </div>
     </div>
   </div>
 </template>
