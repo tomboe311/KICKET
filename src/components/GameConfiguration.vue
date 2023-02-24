@@ -55,7 +55,7 @@ export default {
         <button v-on:click="newPlayer" class="btn btn-sm btn-success" :title=btnAddText><font-awesome-icon icon="fa-solid fa-plus" /></button>
       </span>
     </p>
-    <div  v-if="players.length <= 2" class="alert alert-danger" role="alert">{{ missingPlayersText }}</div>
+    <div v-if="players.length <= 2" class="alert alert-danger" role="alert">{{ missingPlayersText }}</div>
 
     <div id="players">
       <div
@@ -77,8 +77,9 @@ export default {
         <button
           v-on:click="startGame"
           :disabled="players.length <= 2"
-          class="btn btn-primary"
+          class="btn btn-primary btn-sm text-uppercase"
           :title="btnStartText">
+          {{ btnStartText }}
           <font-awesome-icon icon="fa-solid fa-play" />
         </button>
     </div>
