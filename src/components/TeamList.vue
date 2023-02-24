@@ -1,6 +1,6 @@
-app.component('team-list', {
-  props: {
-    started: {
+<script setup>
+defineProps({
+  started: {
       type: Boolean,
       required: true
     },
@@ -9,16 +9,31 @@ app.component('team-list', {
       required: true
     },
     players: {
-      type: Array
+      type: Array,
+    }
+})
+</script>
+<script>
+export default {
+  methods: {
+    restart() {
+      this.$emit('restart-game')
     }
   },
-  template:
-    /*html*/
-    `<div id="teams" v-if="started">
+  computed: {
+    getSumOfPlayers() {
+      return this.players.length
+    }
+  }
+}
+</script>
+
+<template>
+  <div id="teams" v-if="started">
     <h2>Teams for {{ getSumOfPlayers }} players</h2>
     <table id="teamList" class="table table-bordered table-hover">
       <thead>
-        <tr class="thead-dark">
+        <tr class="table-dark">
           <th scope="col">Team</th>
           <th scope="col">Defense</th>
           <th scope="col">Offense</th>
@@ -32,15 +47,9 @@ app.component('team-list', {
       </tbody>
     </table>
     <button class="btn btn-dark" v-on:click="restart">Back</button>
-  </div>`,
-  methods: {
-    restart() {
-      this.$emit('restart-game')
-    }
-  },
-  computed: {
-    getSumOfPlayers() {
-      return this.players.length;
-    }
-  }
-})
+  </div>
+</template>
+
+<style>
+
+</style>

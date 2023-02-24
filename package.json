@@ -1,0 +1,36 @@
+{
+  "name": "kicket",
+  "version": "1.1.0",
+  "author": {
+    "name": "Thomas Boehringer",
+    "url": "https://tboehringer.de",
+    "email": "dev@tboehringer.de"
+  },
+  "private": true,
+  "license": "MIT",
+  "homepage": "https://kicket.tboehringer.de",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tomboe311/KICKET.git"
+  },
+  "bugs": "https://github.com/tomboe311/KICKET/issues",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-brands-svg-icons": "^6.3.0",
+    "@fortawesome/free-regular-svg-icons": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.3",
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "vite": "^4.1.3"
+  }
+}
