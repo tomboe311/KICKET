@@ -27,30 +27,26 @@ app.component('game-configuration', {
         <div
           v-for="(player, index) in players"
           :key=index
-          class="form-group row">
-          <div class="col-12">
-            <div class="input-group">
-              <input
-                v-on:keyup="updatePlayer(index, $event.target.value)"
-                :id="'pl_' + index"
-                class="form-control"
-                type="text"
-                name="player[]"
-                :placeholder="[[ player ]]">
-              <button v-on:click="remove(index)" class="input-group-addon btn btn-sm btn-outline-danger">{{ btnRemovePlayerText }}</button>
-            </div>
+          class="input-group row">
+          <div class="input-group mb-3">
+            <input
+              v-on:keyup="updatePlayer(index, $event.target.value)"
+              :id="'pl_' + index"
+              class="form-control"
+              type="text"
+              name="player[]"
+              :placeholder="[[ player ]]">
+            <button v-on:click="remove(index)" class="input-group-addon btn btn-sm btn-outline-danger">{{ btnRemovePlayerText }}</button>
           </div>
         </div>
       </div>
-      <div class="form-group row">
-        <div class="col-12">
-          <button
-            v-on:click="startGame"
-            :disabled="players.length <= 2"
-            class="btn btn-primary">
-            {{ btnStartText }}
-          </button>
-        </div>
+      <div class="input-group">
+        <button
+          v-on:click="startGame"
+          :disabled="players.length <= 2"
+          class="btn btn-primary btn-sm text-uppercase">
+          {{ btnStartText }}
+        </button>
       </div>
     </div>`,
   methods: {

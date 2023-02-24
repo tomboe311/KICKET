@@ -1,15 +1,15 @@
 app.component('kfooter', {
-    props: {
-        copyright: {
-            type: String,
-            required: true
-        },
-        gdpr: {
-            type: String,
-            required: true
-        }
+  props: {
+    copyright: {
+      type: String,
+      required: true
     },
-    template:
+    gdpr: {
+      type: String,
+      required: true
+    }
+  },
+  template:
     /*html*/
     `
     <footer class="footer">

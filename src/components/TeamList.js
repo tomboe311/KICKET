@@ -18,7 +18,7 @@ app.component('team-list', {
     <h2>Teams for {{ getSumOfPlayers }} players</h2>
     <table id="teamList" class="table table-bordered table-hover">
       <thead>
-        <tr class="thead-dark">
+        <tr class="table-dark">
           <th scope="col">Team</th>
           <th scope="col">Defense</th>
           <th scope="col">Offense</th>

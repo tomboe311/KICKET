@@ -6,6 +6,9 @@ body {
   background-color: #366164;
   margin-bottom: 45px;
 }
+nav {
+  padding: .5rem 1rem
+}
 .navbar-dark {
   background-color: #366164;
 }
