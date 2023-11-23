@@ -1,2 +1,2 @@
 # KICKET
-With KICKET you can generate random teams for table soccer
+Create perfect teams for foosball and other team sports with KICKET - the ultimate app.
