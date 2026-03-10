@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 
 const STORAGE_KEY = 'kicket-players'
 const DEFAULT_PLAYERS = ['', '', '', '']
@@ -30,6 +30,26 @@ watch(
   { deep: true },
 )
 
+const duplicateIndices = computed(() => {
+  const seen = new Map()
+  const dupes = new Set()
+  players.value.forEach((name, index) => {
+    const normalized = name.trim().toLowerCase()
+    if (!normalized) return
+    if (seen.has(normalized)) {
+      dupes.add(seen.get(normalized))
+      dupes.add(index)
+    } else {
+      seen.set(normalized, index)
+    }
+  })
+  return dupes
+})
+
+const hasDuplicates = computed(() => duplicateIndices.value.size > 0)
+const tooFewPlayers = computed(() => players.value.length <= 2)
+const canStart = computed(() => !tooFewPlayers.value && !hasDuplicates.value)
+
 function addPlayer() {
   players.value.push('')
 }
@@ -39,6 +59,7 @@ function removePlayer(index) {
 }
 
 function startGame() {
+  if (!canStart.value) return
   const validated = players.value
     .map((p) => p.trim())
     .filter((p) => p.length > 0)
@@ -54,7 +75,7 @@ function startGame() {
     <p class="text-muted small mb-3">Add the names of all players below.</p>
 
     <div
-      v-if="players.length <= 2"
+      v-if="tooFewPlayers"
       class="alert alert-danger py-2 small"
       role="alert"
     >
@@ -62,21 +83,30 @@ function startGame() {
     </div>
 
     <div class="d-flex flex-column gap-2 mb-3">
-      <div v-for="(_, index) in players" :key="index" class="input-group">
-        <input
-          v-model="players[index]"
-          class="form-control"
-          type="text"
-          :placeholder="'Player ' + (index + 1)"
-          :aria-label="'Player ' + (index + 1) + ' name'"
-        />
-        <button
-          class="btn btn-outline-danger btn-remove"
-          :aria-label="'Remove player ' + (index + 1)"
-          @click="removePlayer(index)"
+      <div v-for="(_, index) in players" :key="index">
+        <div class="input-group">
+          <input
+            v-model="players[index]"
+            class="form-control"
+            :class="{ 'is-invalid': duplicateIndices.has(index) }"
+            type="text"
+            :placeholder="'Player ' + (index + 1)"
+            :aria-label="'Player ' + (index + 1) + ' name'"
+          />
+          <button
+            class="btn btn-outline-danger btn-remove"
+            :aria-label="'Remove player ' + (index + 1)"
+            @click="removePlayer(index)"
+          >
+            &times;
+          </button>
+        </div>
+        <div
+          v-if="duplicateIndices.has(index)"
+          class="invalid-feedback d-block"
         >
-          &times;
-        </button>
+          Duplicate name
+        </div>
       </div>
     </div>
 
@@ -90,7 +120,7 @@ function startGame() {
 
     <div>
       <button
-        :disabled="players.length <= 2"
+        :disabled="!canStart"
         class="btn btn-start btn-lg w-100 text-uppercase"
         aria-label="Start game and generate teams"
         @click="startGame"
