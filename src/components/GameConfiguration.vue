@@ -1,9 +1,34 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
+
+const STORAGE_KEY = 'kicket-players'
+const DEFAULT_PLAYERS = ['', '', '', '']
 
 const emit = defineEmits(['start-game'])
 
-const players = ref(['', '', '', ''])
+const players = ref([...DEFAULT_PLAYERS])
+
+onMounted(() => {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    if (saved) {
+      const parsed = JSON.parse(saved)
+      if (Array.isArray(parsed) && parsed.length >= 1) {
+        players.value = parsed
+      }
+    }
+  } catch {
+    /* ignore corrupt data */
+  }
+})
+
+watch(
+  players,
+  (val) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(val))
+  },
+  { deep: true },
+)
 
 function addPlayer() {
   players.value.push('')
