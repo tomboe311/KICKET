@@ -1,19 +1,16 @@
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import KNavbar from './components/KNavbar.vue'
 import KFooter from './components/KFooter.vue'
 import GameConfiguration from './components/GameConfiguration.vue'
 import TeamList from './components/TeamList.vue'
 import defaultTeamNames from './data/defaultTeamNames.json'
 
-const description =
-  'Create perfect teams for foosball and other team sports with KICKET - the ultimate app.'
+const { t } = useI18n()
 
 const author = { name: 'Thomas Boehringer', url: 'https://tboehringer.de' }
-const gdpr = {
-  text: 'Privacy Policy',
-  url: 'https://tboehringer.de/datenschutz.html#datenschutz',
-}
+const gdprUrl = 'https://tboehringer.de/datenschutz.html#datenschutz'
 
 const started = ref(false)
 const teams = ref([])
@@ -34,7 +31,7 @@ function buildTeams(shuffledPlayers) {
   const result = []
   for (let i = 0; i < teamCount; i++) {
     result.push({
-      name: defaultTeamNames[i] || `Team ${i + 1}`,
+      name: defaultTeamNames[i] || t('app.teamFallback', { n: i + 1 }),
       members: pool.splice(0, 2),
     })
   }
@@ -64,7 +61,7 @@ function restartGame() {
     <div class="text-center my-4">
       <h1 class="hero-title display-5">KICKET</h1>
       <p class="hero-subtitle lead">
-        {{ description }}
+        {{ $t('app.description') }}
       </p>
     </div>
 
@@ -89,7 +86,7 @@ function restartGame() {
   <KFooter
     :author-name="author.name"
     :author-url="author.url"
-    :gdpr-text="gdpr.text"
-    :gdpr-url="gdpr.url"
+    :gdpr-text="$t('footer.privacyPolicy')"
+    :gdpr-url="gdprUrl"
   />
 </template>

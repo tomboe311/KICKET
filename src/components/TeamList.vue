@@ -15,14 +15,14 @@ const emit = defineEmits(['shuffle-teams', 'restart-game'])
 
 <template>
   <div>
-    <h2 class="h5 fw-bold mb-3">Teams for {{ players.length }} players</h2>
+    <h2 class="h5 fw-bold mb-3">{{ $t('teams.heading', { count: players.length }) }}</h2>
     <div class="table-responsive">
       <table class="table table-bordered table-hover align-middle mb-4">
         <thead>
           <tr class="table-dark">
-            <th scope="col">Team</th>
-            <th scope="col">Defense</th>
-            <th scope="col">Offense</th>
+            <th scope="col">{{ $t('teams.team') }}</th>
+            <th scope="col">{{ $t('teams.defense') }}</th>
+            <th scope="col">{{ $t('teams.offense') }}</th>
           </tr>
         </thead>
         <tbody>
@@ -40,17 +40,17 @@ const emit = defineEmits(['shuffle-teams', 'restart-game'])
     <div class="d-flex gap-2">
       <button
         class="btn btn-start flex-fill text-uppercase"
-        aria-label="Shuffle teams again"
+        :aria-label="$t('teams.shuffleAriaLabel')"
         @click="emit('shuffle-teams')"
       >
-        Shuffle Again
+        {{ $t('teams.shuffle') }}
       </button>
       <button
         class="btn btn-outline-secondary"
-        aria-label="Go back to configuration"
+        :aria-label="$t('teams.backAriaLabel')"
         @click="emit('restart-game')"
       >
-        Back
+        {{ $t('teams.back') }}
       </button>
     </div>
   </div>

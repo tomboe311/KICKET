@@ -1,0 +1,36 @@
+{
+  "app": {
+    "description": "Erstelle perfekte Teams für Kicker und andere Mannschaftssportarten mit KICKET – der ultimativen App.",
+    "teamFallback": "Team {n}"
+  },
+  "nav": {
+    "mainNavigation": "Hauptnavigation",
+    "home": "KICKET Startseite"
+  },
+  "config": {
+    "heading": "Spielkonfiguration",
+    "subtitle": "Füge die Namen aller Spieler hinzu.",
+    "minPlayers": "Mindestens 3 Spieler benötigt!",
+    "playerPlaceholder": "Spieler {n}",
+    "playerAriaLabel": "Name von Spieler {n}",
+    "removePlayer": "Spieler {n} entfernen",
+    "duplicateName": "Doppelter Name",
+    "addPlayerAriaLabel": "Neuen Spieler hinzufügen",
+    "addPlayer": "+ Spieler hinzufügen",
+    "startAriaLabel": "Spiel starten und Teams generieren",
+    "start": "Start"
+  },
+  "teams": {
+    "heading": "Teams für {count} Spieler",
+    "team": "Team",
+    "defense": "Abwehr",
+    "offense": "Angriff",
+    "shuffleAriaLabel": "Teams erneut mischen",
+    "shuffle": "Neu mischen",
+    "backAriaLabel": "Zurück zur Konfiguration",
+    "back": "Zurück"
+  },
+  "footer": {
+    "privacyPolicy": "Datenschutz"
+  }
+}

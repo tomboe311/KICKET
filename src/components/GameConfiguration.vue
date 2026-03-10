@@ -71,15 +71,15 @@ function startGame() {
 
 <template>
   <div>
-    <h2 class="h5 fw-bold mb-3">Game Configuration</h2>
-    <p class="text-muted small mb-3">Add the names of all players below.</p>
+    <h2 class="h5 fw-bold mb-3">{{ $t('config.heading') }}</h2>
+    <p class="text-muted small mb-3">{{ $t('config.subtitle') }}</p>
 
     <div
       v-if="tooFewPlayers"
       class="alert alert-danger py-2 small"
       role="alert"
     >
-      At least 3 players needed!
+      {{ $t('config.minPlayers') }}
     </div>
 
     <div class="d-flex flex-column gap-2 mb-3">
@@ -90,12 +90,12 @@ function startGame() {
             class="form-control"
             :class="{ 'is-invalid': duplicateIndices.has(index) }"
             type="text"
-            :placeholder="'Player ' + (index + 1)"
-            :aria-label="'Player ' + (index + 1) + ' name'"
+            :placeholder="$t('config.playerPlaceholder', { n: index + 1 })"
+            :aria-label="$t('config.playerAriaLabel', { n: index + 1 })"
           />
           <button
             class="btn btn-outline-danger btn-remove"
-            :aria-label="'Remove player ' + (index + 1)"
+            :aria-label="$t('config.removePlayer', { n: index + 1 })"
             @click="removePlayer(index)"
           >
             &times;
@@ -105,27 +105,27 @@ function startGame() {
           v-if="duplicateIndices.has(index)"
           class="invalid-feedback d-block"
         >
-          Duplicate name
+          {{ $t('config.duplicateName') }}
         </div>
       </div>
     </div>
 
     <button
       class="btn btn-outline-secondary btn-sm mb-4"
-      aria-label="Add a new player"
+      :aria-label="$t('config.addPlayerAriaLabel')"
       @click="addPlayer"
     >
-      + Add Player
+      {{ $t('config.addPlayer') }}
     </button>
 
     <div>
       <button
         :disabled="!canStart"
         class="btn btn-start btn-lg w-100 text-uppercase"
-        aria-label="Start game and generate teams"
+        :aria-label="$t('config.startAriaLabel')"
         @click="startGame"
       >
-        Start
+        {{ $t('config.start') }}
       </button>
     </div>
   </div>

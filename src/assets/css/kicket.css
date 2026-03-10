@@ -120,6 +120,38 @@ nav {
   color: #fff;
 }
 
+.lang-switcher {
+  display: flex;
+  gap: 2px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    background-color 0.15s;
+}
+
+.lang-btn:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.lang-btn.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;
