@@ -1,15 +1,12 @@
 <script setup>
 import { ref } from 'vue'
-import defaultPlayerNames from '../data/defaultPlayerNames.json'
 
 const emit = defineEmits(['start-game'])
 
-const players = ref(['Proton', 'Atom', 'Helium', 'Calcium'])
+const players = ref(['', '', '', ''])
 
 function addPlayer() {
-  const name =
-    defaultPlayerNames[Math.floor(Math.random() * defaultPlayerNames.length)]
-  players.value.push(name)
+  players.value.push('')
 }
 
 function removePlayer(index) {
@@ -45,6 +42,7 @@ function startGame() {
           v-model="players[index]"
           class="form-control"
           type="text"
+          :placeholder="'Player ' + (index + 1)"
           :aria-label="'Player ' + (index + 1) + ' name'"
         />
         <button
