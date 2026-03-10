@@ -1,10 +1,10 @@
 <template>
-  <nav class="navbar navbar-dark py-0" aria-label="Main navigation">
+  <nav class="navbar navbar-dark" aria-label="Main navigation">
     <div class="container-fluid">
-      <a class="navbar-brand py-0" href="/">
+      <a class="navbar-brand" href="/">
         <img
           src="/assets/img/kicket-logo-nav.png"
-          height="30"
+          height="28"
           alt="KICKET home"
         />
       </a>

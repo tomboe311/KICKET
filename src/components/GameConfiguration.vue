@@ -28,22 +28,19 @@ function startGame() {
 
 <template>
   <div>
-    <h2>Game Configuration</h2>
-    <p>
-      Add names of the players
-      <button
-        class="btn btn-sm btn-success"
-        aria-label="Add a new player"
-        @click="addPlayer"
-      >
-        Add new Player
-      </button>
-    </p>
-    <div v-if="players.length <= 2" class="alert alert-danger" role="alert">
+    <h2 class="h5 fw-bold mb-3">Game Configuration</h2>
+    <p class="text-muted small mb-3">Add the names of all players below.</p>
+
+    <div
+      v-if="players.length <= 2"
+      class="alert alert-danger py-2 small"
+      role="alert"
+    >
       At least 3 players needed!
     </div>
-    <div id="players">
-      <div v-for="(_, index) in players" :key="index" class="input-group mb-3">
+
+    <div class="d-flex flex-column gap-2 mb-3">
+      <div v-for="(_, index) in players" :key="index" class="input-group">
         <input
           v-model="players[index]"
           class="form-control"
@@ -51,18 +48,27 @@ function startGame() {
           :aria-label="'Player ' + (index + 1) + ' name'"
         />
         <button
-          class="btn btn-sm btn-outline-danger"
+          class="btn btn-outline-danger btn-remove"
           :aria-label="'Remove player ' + (index + 1)"
           @click="removePlayer(index)"
         >
-          Remove Player
+          &times;
         </button>
       </div>
     </div>
-    <div class="input-group">
+
+    <button
+      class="btn btn-outline-secondary btn-sm mb-4"
+      aria-label="Add a new player"
+      @click="addPlayer"
+    >
+      + Add Player
+    </button>
+
+    <div>
       <button
         :disabled="players.length <= 2"
-        class="btn btn-primary btn-sm text-uppercase"
+        class="btn btn-start btn-lg w-100 text-uppercase"
         aria-label="Start game and generate teams"
         @click="startGame"
       >

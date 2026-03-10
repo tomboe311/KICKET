@@ -23,13 +23,13 @@ const year = new Date().getFullYear()
 
 <template>
   <footer class="footer">
-    <div class="container text-center">
-      <span class="text-muted">
+    <div class="container text-center small">
+      <span>
         &copy; {{ year }}.
         <a :href="authorUrl">{{ authorName }}</a>
       </span>
-      -
-      <span class="text-muted">
+      &middot;
+      <span>
         <a :href="gdprUrl">{{ gdprText }}</a>
       </span>
     </div>

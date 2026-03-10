@@ -47,6 +47,10 @@ function startGame(playerList) {
   started.value = true
 }
 
+function shuffleTeams() {
+  teams.value = buildTeams(shuffle(players.value))
+}
+
 function restartGame() {
   started.value = false
   teams.value = []
@@ -57,18 +61,30 @@ function restartGame() {
 <template>
   <KNavbar />
   <main role="main" class="container">
-    <h1 class="mt-3 text-center">KICKET</h1>
-    <p class="lead text-center">
-      {{ description }}
-    </p>
+    <div class="text-center my-4">
+      <h1 class="hero-title display-5">KICKET</h1>
+      <p class="hero-subtitle lead">
+        {{ description }}
+      </p>
+    </div>
 
-    <GameConfiguration v-if="!started" @start-game="startGame" />
-    <TeamList
-      v-if="started"
-      :teams="teams"
-      :players="players"
-      @restart-game="restartGame"
-    />
+    <div class="content-card mx-auto" style="max-width: 640px">
+      <Transition name="fade" mode="out-in">
+        <GameConfiguration
+          v-if="!started"
+          key="config"
+          @start-game="startGame"
+        />
+        <TeamList
+          v-else
+          key="teams"
+          :teams="teams"
+          :players="players"
+          @shuffle-teams="shuffleTeams"
+          @restart-game="restartGame"
+        />
+      </Transition>
+    </div>
   </main>
   <KFooter
     :author-name="author.name"
